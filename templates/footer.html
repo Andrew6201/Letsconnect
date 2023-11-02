@@ -1,0 +1,36 @@
+
+<style>
+    /* Define your custom footer style */
+    .custom-footer {
+        background-color: blue; /* Choose your background color here */
+        color: #fff; /* Text color */
+    }
+</style>
+
+<footer class="custom-footer" >
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Weconnect</h5>
+                <p>We are here to serve the people, lets make wealth together as you join our platform</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a class="text-light" href="{% url 'home' %}">Home</a></li>
+                    
+                    <li><a class="text-light" href="{% url 'about' %}">About</a></li>
+                    <li><a class="text-light" href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Contact Us</h5>
+                <p>Email: contact@weconnect.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center py-3">
+        &copy; Letsconnect
+    </div>
+</footer>

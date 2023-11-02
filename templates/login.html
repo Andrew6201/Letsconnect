@@ -1,0 +1,37 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .btn{
+  background-color: #0dcaf0;
+}
+</style>
+<div class="container my-5">
+    {% for message in messages %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h1 class="card-title">Enter your Username and Password:</h1>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <p>Don't have an account?</p>
+            <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .recent-item {
+        border: 1px solid;
+     /* Adjust the border properties as needed */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 10px; /* Add margin to separate each recent item */
+}
+
+    /* Custom CSS for adjusting column width */
+    .profilenames {
+        display: block; /* Set the desired width */
+    }
+    .recentdetails{
+        
+        border-width: 1px;
+    }
+
+    .col {
+        background-color: rgb(44, 42, 42);
+        margin: 2px;
+        color: white;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .names {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+        color: #0dcaf0;
+    }
+    
+    .job-item {
+    padding: 10px; /* Add padding as needed */
+    margin-bottom: 5px; /* Add margin to separate each job item */
+    background-color: #0dcaf0;
+}
+    .all{
+        font-weight: bold;
+        color: black;
+    }
+   
+
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #0dcaf0;
+        color: black;
+        font-weight: bold;
+        
+    }
+
+    .profile-table th, .profile-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid white;
+    }
+    .btn{
+        background-color: #0dcaf0;
+    }
+
+    .profile-table th {
+        background-color:#0dcaf0 ;
+        color: white;
+    }
+    .count{
+        font-weight: bold;
+    }
+</style>
+
+{% include 'searchbox.html' %}
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col col-2">
+            <div class="job-item">
+                <p class="count">{{details.count}} jobs</p>
+                
+                <a href="{% url 'body' %}" class="all">All Jobs</a>
+            </div>
+            
+    <!--      <div class="job-list">
+                {% for detail in details %}
+                    <div class="job-item">
+                        <a href="{% url 'body' %}?q={{detail.job}}" class="all">{{detail.job}}</a>
+                    </div>
+                   
+                {% endfor %}
+            </div>
+        </div> -->
+        
+            <!-- Display the list of job titles -->
+            
+                
+                <div class="job-list">
+                    {% for detail in details %}
+                        <div class="job-item">
+                            <a href="{% url 'body' %}?q={{ detail.job }}" class="all">{{ detail.job }}</a>
+                            <!-- Display the count for each job title -->
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        
+        
+        
+
+        <div class="col ">
+            <div>
+                {% for profile in profiledata %}
+                
+                    <p style="display: inline-block; font-weight: bold;text-align: center;">@{{ profile.user.username }}</p>
+                    {% if not profile.firstname %}
+                        <a href="{% url 'create_profile' %}" class="btn btn-primary">Create Profile</a>
+                        <p>Profile not created yet.</p>
+                    {% else %}
+                        <a href="{% url 'updateprofile' profile.pk %}" class="btn btn-primary ">Update Profile</a>
+                        <div class="profilenames">
+                            <p class="names">full name:</p>
+                            <p class="names">{{ profile.firstname }}</p>
+                            <p class="names">{{ profile.lastname }}</p>
+                        </div>
+
+                        <table class="profile-table">
+                            <tr>
+                                <th>Skills</th>
+                                <td>{{ profile.job }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ profile.description }}</td>
+                            </tr>
+                            <tr>
+                                <th >Phone Number</th>
+                                <td>{{ profile.phonenumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ profile.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>{{ profile.country }}</td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>{{ profile.state }}</td>
+                            </tr>
+                        </table>
+                    {% endif %}
+                {% empty %}
+                    <a href="{% url 'create_profile' %}" class="btn btn-primary">Create Profile</a>
+                    <p style="font-weight: bold;">Profile not created yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+     
+
+        {% include 'recent_activities.html' %}
+        
+        
+        <style>
+            .recent-item {
+                border: 1px solid;
+             /* Adjust the border properties as needed */
+            padding: 10px; /* Add padding for spacing */
+            margin-bottom: 10px; /* Add margin to separate each recent item */
+        }
+        
+            /* Custom CSS for adjusting column width */
+            .profilenames {
+                display: block; /* Set the desired width */
+            }
+            .recentdetails{
+                
+                border-width: 1px;
+            }
+        
+            .col {
+                background-color: rgb(44, 42, 42);
+                margin: 2px;
+                color: white;
+            }
+        
+            body {
+                background-color: white;
+            }
+        
+            .names {
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            
+            .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        
+    }
+            
+            
+           
+        </style>
+        
+        
+        
+        <div class="container my-4">
+            <div class="row">
+                
+                <div class="col">
+                    {% for detail in details %}  
+                    <div style="margin-bottom: 10px;">
+                        
+                              
+                               
+        
+                                <table class="profile-table">
+                                   
+                                    <div class="profilenames">
+                                        <p class="names">{{ detail.firstname }}</p>
+                                        <p class="names">{{ detail.lastname }}</p>
+                                    </div>
+
+
+                                    <tr>
+                                        <th>Job/Skill</th>
+                                        <td>{{ detail.job }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>{{ detail.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone Number</th>
+                                        <td>{{ detail.phonenumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{{ detail.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Country</th>
+                                        <td>{{ detail.country }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>State</th>
+                                        <td>{{ detail.state }}</td>
+                                    </tr>
+                                </table>
+                                <div class="container my-2" style="background-color: white;">d</div>
+                                {% endfor %}
+                                
+                    </div>
+                    
+                </div>
+                
+
+
+    </div>
+</div>
+
+{% endblock %}

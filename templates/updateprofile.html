@@ -1,0 +1,72 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .firsth1 {
+        text-align: center;
+    }
+</style>
+<div class="container my-5">
+    <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 10px; text-align: center;">
+        Enter your profile details
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="firsth1">Update your information</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Firstname:</label>
+                    <input type="text" class="form-control" name="firstname" value="{{ profile.firstname }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Lastname:</label>
+                    <input type="text" class="form-control" name="lastname" value="{{ profile.lastname }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="job" class="form-label">Job Title:</label>
+                    <input type="text" class="form-control" name="job" value="{{ profile.job }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Job Description:</label>
+                    <input type="text" class="form-control" name="description" value="{{ profile.description }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <select class="form-control" name="gender" required>
+                        <option value="male" {% if profile.gender == 'male' %} selected {% endif %}>Male</option>
+                        <option value="female" {% if profile.gender == 'female' %} selected {% endif %}>Female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country of residence:</label>
+                    <input type="text" class="form-control" name="country" value="{{ profile.country }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <input type="text" class="form-control" name="state" value="{{ profile.state }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" name="email" value="{{ profile.email }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phonenumber" class="form-label">Phonenumber:</label>
+                    <input type="text" class="form-control" name="phonenumber" value="{{ profile.phonenumber }}" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

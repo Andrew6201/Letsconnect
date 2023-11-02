@@ -1,0 +1,76 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .firsth1 {
+        text-align: center;
+    }
+</style>
+<div class="container my-5">
+    <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 10px; text-align: center;">
+        Enter your profile details
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="firsth1">Enter your profile details</h1>
+            <form method="POST" action="{% url 'create_profile' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Firstname:</label>
+                    <input type="text" class="form-control" name="firstname" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Lastname:</label>
+                    <input type="text" class="form-control" name="lastname" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="job" class="form-label">Job Title:</label>
+                    <input type="text" class="form-control" name="job" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Job Description:</label>
+                    <input type="text" class="form-control" name="description" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <select class="form-control" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country of residence:</label>
+                    <input type="text" class="form-control" name="country" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="state" class="form-label">State:</label>
+                    <input type="text" class="form-control" name="state" required>
+                </div>
+
+                
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phonenumber" class="form-label">Phonenumber:</label>
+                    <input type="text" class="form-control" name="phonenumber" required>
+                </div>
+
+               
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

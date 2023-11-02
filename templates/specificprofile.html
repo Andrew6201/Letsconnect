@@ -1,0 +1,106 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .recent-item {
+        border: 1px solid;
+     /* Adjust the border properties as needed */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 10px; /* Add margin to separate each recent item */
+}
+
+    /* Custom CSS for adjusting column width */
+    .profilenames {
+        display: block; /* Set the desired width */
+    }
+    .recentdetails{
+        
+        border-width: 1px;
+    }
+
+    .col {
+        background-color: rgb(44, 42, 42);
+        margin: 2px;
+        color: white;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .names {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .profile-table th, .profile-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid white;
+    }
+
+    .profile-table th {
+        background-color: rgb(44, 42, 42);
+        color: white;
+    }
+</style>
+
+
+
+<div class="container my-4">
+    <div class="row">
+        
+
+        <div class="col">
+            <div>
+                
+                        
+                        <div class="profilenames">
+                            <p class="names">{{ details.firstname }}</p>
+                            <p class="names">{{ details.lastname }}</p>
+                        </div>
+
+                        <table class="profile-table">
+                           
+                            <tr>
+                                <th>Job/Skill</th>
+                                <td>{{ details.job }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ details.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone Number</th>
+                                <td>{{ details.phonenumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ details.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>{{ details.country }}</td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>{{ details.state }}</td>
+                            </tr>
+                        </table>
+                
+            </div>
+        </div>
+
+        
+        
+        
+
+    </div>
+</div>
+{% endblock %}

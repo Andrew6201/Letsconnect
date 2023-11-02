@@ -1,0 +1,47 @@
+
+
+<style>
+    .date{
+        font-weight: bold;
+        color: blue;
+    }
+    .username{
+        color: blue;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    .view{
+        color: red;
+        font-weight: bold;
+        
+    }
+    span{
+        color: black;
+        font-weight: bold;
+    }
+    .jobdetail{
+        font-size: 20px;
+        font-weight: bold;
+    }
+  .recent-activities{
+    font-weight: bold;
+  }
+  .recent-item{background-color:#0dcaf0; }
+</style>
+
+<div class="col col-4">
+    <h3 class="recent-activities">Recent activities</h3>
+    <div class="recentdetails">
+        {% for detail in details|slice:"0:2" %}
+        <div class="recent-item">
+            <p class="username">@{{detail.user.username}}</p>
+            
+           
+            <p class="jobdetail"><span>Job</span> - {{detail.job}}</p>
+            <p class="jobdetail"><span>Phonenumber</span> - {{detail.phonenumber}}</p>
+            <p class="date">{{detail.datecreated}}</p>
+            <a class="view" href="{% url 'specificprofile' detail.id%}">View Details</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
